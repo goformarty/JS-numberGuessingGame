@@ -12,7 +12,7 @@ function checkGuess() {
 	// set userGuess to value from the text field 
 	//and make sure user enetered a number
 	var userGuess = Number(guessField.value);
-	//when 
+
 	if(guessCount===1) {
 		guesses.textContent = 'Previous guesses: ';
 	}
@@ -41,3 +41,19 @@ function checkGuess() {
 }
 
 guessSubmit.addEventListener('click', checkGuess);
+
+function setGameOver() {
+	// disable submit button and text field
+	guessSubmit.disabled = true;
+	guessField.disabled = true;
+
+	//generate new reset button
+	resetButton = document.createElement('button');
+	resetButton.textContent = 'Start new game';
+	document.body.appendChild(resetButton);
+	// set click event listener to reset button
+	resetButton.addEventListener('click', resetGame);
+}
+
+
+
