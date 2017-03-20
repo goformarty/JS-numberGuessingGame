@@ -6,6 +6,7 @@ var lowOrHigh = document.querySelector('.lowOrHigh');
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
 var guessCount = 1;
+guessField.focus();
 var resetButton;
 
 function checkGuess() {
@@ -55,5 +56,30 @@ function setGameOver() {
 	resetButton.addEventListener('click', resetGame);
 }
 
+function resetGame() {
+	//set guessCount back to 1 
+	guessCount = 1;
 
+	// clear information in paragraphs
+	var resultParas = document.querySelectorAll('.resultParas p');
+	for (var i = 0; i<resultParas.length; i++) {
+		resultParas[i].textContent = '';
+	}
+
+	//remove the reset button
+	resetButton.parentNode.removeChild(resetButton);
+
+	// enable submit button and text field
+	guessSubmit.disabled = false;
+	guessField.disabled = false;
+	// empty and focus to the text field
+	guessField.value = '';
+	guessField.focus();
+
+	// remove background color
+	lastResult.style.backgroundColor = 'white';
+
+	// generate new random number
+	randomNumber = Math.floor(Math.random()*100)+1;
+}
 
